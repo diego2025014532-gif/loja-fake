@@ -45,6 +45,9 @@ export default function App() {
       )
     );
   }
+  function removeFromCart(productId: number) {
+  setCart((current) => current.filter((item) => item.product.id !== productId));
+}
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -67,6 +70,7 @@ export default function App() {
           items={cart}
           onBack={() => setScreen("home")}
           onChangeQuantity={changeQuantity}
+          onRemoveItem={removeFromCart}
         />
       </SafeAreaProvider>
     );
